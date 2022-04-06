@@ -1,2 +1,4 @@
-# -BaaarkingDog_Algorithms
-I'm gonna write the TIL for algorithms in here
+# 바킹독 알고리즘 강의
+
+- 매 강의 마다 혹은 백준에서 푼 문제에 대한 풀이를 작성합니다. 
+- TIL로 해야하는 부분
