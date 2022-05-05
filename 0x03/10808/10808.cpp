@@ -1,6 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+void example(string inputValueString) {
+    for (char alphabet = 'a'; alphabet <= 'z'; alphabet++) {
+        int countAmount = 0;
+        for(char value : inputValueString)
+            if (alphabet == value) countAmount++;
+
+        cout << countAmount << ' ';
+    }
+}
+
+
 int alphabet[26];
 
 int main(void) {
