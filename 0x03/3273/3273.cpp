@@ -18,7 +18,8 @@ int main(void) {
     cin >> resultValue;
 
     for (int i = 0; i < inputValue; i++) {
-        if (resultValue - digits[i] > 0 && occur[resultValue-digits[i]]) countAmount++;
+        if (resultValue - digits[i] > 0
+         && occur[resultValue-digits[i]]) countAmount++;
         occur[digits[i]] = true;
     }
     cout << countAmount;

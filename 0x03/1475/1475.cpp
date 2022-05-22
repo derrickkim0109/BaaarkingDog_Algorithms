@@ -1,24 +1,43 @@
 #include <bits/stdc++.h>
+
+
 using namespace std;
+using lecture = pair<int, int>;
 
-int main(void) {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
+priority_queue<lecture, vector<lecture>, greater<lecture>> pq;
 
-    int inputValue;
-    int countAmount = 1;
-    int digits[10] = {};
-    cin >> inputValue;
+int main() {
+    int lectureCount;
+    cin >> lectureCount;
+    
+    vector<lecture> lectures(lectureCount);
 
-    while (inputValue > 0) {
-        digits[inputValue%10]++;
-        inputValue /= 10;
+    for (int i = 1; i <= lectureCount; i++) {
+        int lectureIndex, startTime, endTime;
+        
+        cin >> lectureIndex >> startTime >> endTime;
+        lectures[i].first = startTime;
+        lectures[i].second = endTime;
+    } 
+    
+    sort(lectures.begin(), lectures.end());
+    
+    int count = 0;
+    
+    for (int i = 0; i < lectureCount; i++) {
+        if (pq.size() > 0) {
+            if (pq.top().first > lectures[i].first) count++;
+            else pq.pop();
+        } 
+        else count++;
+        
+        lecture add_lecture;
+        add_lecture.first = lectures[i].second;
+        add_lecture.second = lectures[i].first;
+        pq.push(add_lecture);
     }
-
-    for(int i = 0; i < 10; i++) {
-        if(i == 6 || i == 9) continue;
-        countAmount = max(countAmount, digits[i]);
-    }
-    countAmount = max(countAmount, (digits[6] + digits[9]+1)/2);
-    cout << countAmount;
+    
+    cout << count;
+    
+    return 0;
 }
